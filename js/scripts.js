@@ -4,48 +4,25 @@ function Ticket(age,movie,time) {
   this.movie = movie;
   this.time = time;
 }
+var ages = {"young":0, "middle":+2, "old":0}
+var movies = {"mile22":8, "alpha":8, "missionImpossible":10}
+var times = {"early":0, "late":+2}
 
-// var ticket = function (newTciket) {
-//   if(newTicket === 2) {
-//     return
-//   } if else (newTicket === 3){
-//     return
-//   } if else (newTicket === 4){
-//     return
-//   } if else (newTicket === 5){
-//     return
-//   }
-//
-// }
-
-var ticket = function (newTicket) {
-  if(newTicket.ageInput === 0 && newTicket.movie === 2 && newTicket.timeInput === 1 ) {
-    return "$6"
-  }
-
-  // if else (newTicket === 3){
-  //   return
-  // } if else (newTicket === 4){
-  //   return
-  // } if else (newTicket === 5){
-  //   return
-  // }
-
-});
-
+Ticket.prototype.ticketPrice = function(){
+  return ages[this.age] + movies[this.movie] + times[this.time]
+};
 
 // user interface
-$(document).ready.(function(){
-  $("#movieSubmit").submit(function(event) {
+$(document).ready(function(){
+  $("form#movieSubmit").submit(function(event) {
   event.preventDefault();
 
   var ageInput = $("#age").val();
   var movieInput = $("#movie").val();
   var timeInput = $("#time").val();
-
   var newTicket = new Ticket(ageInput, movieInput, timeInput);
-
-  $("#price").append(newTciket);
+  $("#price").text("");
+  $("#price").append(" $" + newTicket.ticketPrice());
 
   });
 });
